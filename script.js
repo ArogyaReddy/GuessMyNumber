@@ -24,9 +24,7 @@ console.log(document.querySelector('.guess').value);
 let score = 20;
 
 //NOTE: get a scecrete number between 1 to 20
-const secreteNumber = Math.trunc(Math.random() * 20) + 1;
-// Display Randome number in ?
-document.querySelector('.number').textContent = secreteNumber;
+let secreteNumber = Math.trunc(Math.random() * 20) + 1;
 
 //NOTE: using addEventListener to add click event. When check button is clicked,
 // addEventListener for click event and a fucntion is implemented for click event
@@ -44,6 +42,10 @@ document.querySelector('.check').addEventListener('click', function () {
     //THIS:- When player wins
   } else if (guess === secreteNumber) {
     document.querySelector('.message').textContent = '👏 Correct number!';
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+    // Display Randome number in ?
+    document.querySelector('.number').textContent = secreteNumber;
 
     //THIS:- When player's guess is more than secreteNumber
   } else if (guess > secreteNumber) {
@@ -69,4 +71,18 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   }
+
+  //DO:- Implement AGAIN button fnctionality. To set the user play the game again
+
+  document.querySelector('.again').addEventListener('click', function () {
+    //TODO:--
+    score = 20;
+    secreteNumber = Math.trunc(Math.random() * 20) + 1;
+    document.querySelector('.message').textContent = 'Start guessing...';
+    document.querySelector('.score').textContent = score;
+    document.querySelector('.number').textContent = '?';
+    document.querySelector('.guess').value = '';
+    document.querySelector('body').style.backgroundColor = '#222';
+    document.querySelector('.number').style.width = '15rem';
+  });
 });
